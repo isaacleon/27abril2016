@@ -1,0 +1,24 @@
+pib<- read.csv("C:\\Users\\SALA-C22\\Documents\\PIB.csv",header=F,dec=".")
+pibst <- ts(pib[,2],start=1993,frequency=4)
+View(pibst)
+plot(pibst)
+Acf(part)
+pibpro <- meanf(pibst,4)
+plot (pibpro)
+#ingenuo
+pibnai <- naive(pibst,4)
+plot(pibnai)
+#ingenuo estacional
+pibsnai <- snaive (pibst,4)
+plot(pibsnai)
+#metodo de la deriva
+pibder <- rwf(pibst,4,drift=T)
+plot(pibder)
+med<- accuracy(pibpro)
+ling<-accuracy(pibnai)
+snai<-accuracy(pibsnai)
+der<-accuracy(pibder)
+med
+ling
+snai
+der
